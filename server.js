@@ -7,7 +7,9 @@ const cors=require('cors')
 const dotenv=require('dotenv')
 dotenv.config()
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin:"https://appstore-app.netlify.app/"
+}));
 
 try{
   mongoose.connect(process.env.CONNECTION_STRING).then(()=>{
