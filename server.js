@@ -22,8 +22,8 @@ mongoose.connect(process.env.CONNECTION_STRING, { useNewUrlParser: true, useUnif
   });
 
 
-app.use('/task', (req, res, next) => {
-  if (req.get('User-Agent') === "PostmanRuntime/7.41.2") {
+app.use('*', (req, res, next) => {
+  if (req.get('User-Agent').includes("PostmanRuntime")) {
     return res.status(400).json({
       status: "Bad Request"
     });
